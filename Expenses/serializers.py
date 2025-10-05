@@ -19,9 +19,17 @@ class CategorySerializer(serializers.ModelSerializer):
 
 
 class ExpenseSerializer(serializers.ModelSerializer):
+    category_name = serializers.SerializerMethodField()
+    
     class Meta:
         model = Expense
-        fields = ['id','category','title','amount','date','payment_method','note']
+        fields = ['id','category','category_name','title','amount','date','payment_method','note']
+        extra_kwargs = {
+            'category': {'write_only': True}
+        }
+
+    def get_category_name(self, obj):
+        return obj.category.name if obj.category else None
 
     def validate_category(self,value):
         if not value:
