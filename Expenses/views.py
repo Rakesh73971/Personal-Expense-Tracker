@@ -1,4 +1,5 @@
 
+from django.http import Http404
 from .models import Category,Expense
 from .serializers import CategorySerializer,ExpenseSerializer,ExpenseListSerializer
 from rest_framework.viewsets import ModelViewSet
@@ -9,12 +10,14 @@ from rest_framework.decorators import action
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.filters import SearchFilter,OrderingFilter
 from .filters import ExpenseFilter
+from rest_framework.exceptions import NotFound
 
 # Create your views here.
 
 class CategoryViewset(ModelViewSet):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
+
 
 class ExpenseViewSet(ModelViewSet):
     queryset = Expense.objects.all()

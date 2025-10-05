@@ -11,10 +11,10 @@ class Category(models.Model):
     
 
 class Expense(models.Model):
-    PAYMENT_CASH = 'C'
-    PAYMENT_CARD = 'D'
-    PAYMENT_UPI = 'U'
-    PAYMENT_BANK = 'B'
+    PAYMENT_CASH = 'Cash'
+    PAYMENT_CARD = 'Card'
+    PAYMENT_UPI = 'UPI'
+    PAYMENT_BANK = 'Bank Transfer'
     PAYMENT_CHOICES = [
         (PAYMENT_CASH,'Cash'),
         (PAYMENT_CARD,'Card'),
@@ -30,7 +30,7 @@ class Expense(models.Model):
     )
     note = models.TextField(null=True,blank=True)
     date = models.DateField(auto_now_add=True)
-    payment_method = models.CharField(max_length=1,choices=PAYMENT_CHOICES,default=PAYMENT_CASH)
+    payment_method = models.CharField(max_length=20,choices=PAYMENT_CHOICES,default=PAYMENT_CASH)
 
     def __str__(self):
         return f"{self.title},{self.amount}"
