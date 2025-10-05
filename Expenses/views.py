@@ -1,16 +1,15 @@
 
-from django.http import Http404
 from .models import Category,Expense
 from .serializers import CategorySerializer,ExpenseSerializer,ExpenseListSerializer
 from rest_framework.viewsets import ModelViewSet
 from django.db.models import Sum
 from rest_framework.response import Response
-from rest_framework import status
 from rest_framework.decorators import action
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.filters import SearchFilter,OrderingFilter
 from .filters import ExpenseFilter
-from rest_framework.exceptions import NotFound
+
+
 
 # Create your views here.
 
@@ -39,13 +38,13 @@ class ExpenseViewSet(ModelViewSet):
             serializer = ExpenseSerializer(page, many=True)
             total_amount = queryset.aggregate(total=Sum('amount'))['total'] or 0
             return self.get_paginated_response({
-                'results': serializer.data,
+                'Expenses': serializer.data,
                 'total_amount': float(total_amount)
             })
         
         serializer = ExpenseSerializer(queryset, many=True)
         total_amount = queryset.aggregate(total=Sum('amount'))['total'] or 0
         return Response({
-            'results': serializer.data,
+            'Expenses': serializer.data,
             'total_amount': float(total_amount)
         })

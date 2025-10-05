@@ -61,7 +61,7 @@ class ExpenseSerializer(serializers.ModelSerializer):
         return value
 
 class ExpenseListSerializer(serializers.Serializer):
-    results = ExpenseSerializer(many=True)
+    Expenses = ExpenseSerializer(many=True)
     total_amount = serializers.FloatField()
         
 
