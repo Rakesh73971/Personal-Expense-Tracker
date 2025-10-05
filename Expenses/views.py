@@ -10,7 +10,6 @@ from rest_framework.decorators import action
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.filters import SearchFilter,OrderingFilter
 from .filters import ExpenseFilter
-from rest_framework.exceptions import NotFound
 
 # Create your views here.
 
