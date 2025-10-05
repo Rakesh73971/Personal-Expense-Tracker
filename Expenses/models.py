@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.validators import MinValueValidator
+from django.utils import timezone
 
 # Create your models here.
 
@@ -29,7 +30,7 @@ class Expense(models.Model):
         validators=[MinValueValidator(0.01)]
     )
     note = models.TextField(null=True,blank=True)
-    date = models.DateField(auto_now_add=True)
+    date = models.DateField(default=timezone.now().date())
     payment_method = models.CharField(max_length=20,choices=PAYMENT_CHOICES,default=PAYMENT_CASH)
 
     def __str__(self):
