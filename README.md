@@ -50,7 +50,7 @@ This project helps users categorize their expenses, track total spending, and ea
 | **Expense Detail**     | `/expenses/{id}/`                           | Retrieve, update, or delete an expense    |
 | **Expense with Total** | `/expenses/with-total/`                     | View filtered expenses with total amount  |
 | **Filter by Category** | `/expenses/with-total/?category=1`          | Get total sum of expenses for category 1  |
-| **Filter by Payment**  | `/expenses/with-total/?payment_method=Cash` | Get total sum of expenses paid by Cash    |
+| **Filter by Payment**  | `/expenses/with-total/?payment_method=C` | Get total sum of expenses paid by Cash    |
 
 
 
